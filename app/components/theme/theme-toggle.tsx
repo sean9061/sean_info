@@ -39,10 +39,14 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-background border border-foreground/10 hover:bg-foreground/5 transition-colors"
+      className="p-2.5 rounded-full bg-muted hover:bg-muted/90 transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 shadow-sm hover:shadow-md border border-border/50 relative overflow-hidden"
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
     >
-      {theme === 'light' ? <FiMoon className="w-5 h-5" /> : <FiSun className="w-5 h-5" />}
+      <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+      {theme === 'light' 
+        ? <FiMoon className="w-5 h-5 text-foreground transition-transform duration-300 transform hover:rotate-12" /> 
+        : <FiSun className="w-5 h-5 text-foreground transition-transform duration-300 transform hover:rotate-12" />
+      }
     </button>
   );
 }

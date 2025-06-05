@@ -4,7 +4,7 @@ import AboutSection from './components/sections/about-section';
 import EducationSection from './components/sections/education-section';
 import HeroSection from './components/sections/hero-section';
 import HobbiesSection from './components/sections/hobbies-section';
-import InteractiveSection from './components/sections/interactive-section';
+import MinigamesSection from './components/sections/minigames-section';
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         <AboutSection />
         <HobbiesSection />
         <EducationSection />
-        <InteractiveSection />
+        <MinigamesSection />
       </main>
       <Footer />
     </div>

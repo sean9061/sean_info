@@ -3,41 +3,49 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --accent: #0077cc;
+  /* ライトテーマの改善されたカラーパレット */
+  --background: #f9fafb;
+  --foreground: #111827;
+  --accent: #4f46e5;
   --accent-foreground: #ffffff;
-  --muted: #f5f7fa;
-  --muted-foreground: #64748b;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
   --card: #ffffff;
-  --card-foreground: #171717;
-  --border: #e2e8f0;
+  --card-foreground: #111827;
+  --border: #e5e7eb;
   --radius: 0.5rem;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 [data-theme="dark"] {
-  --background: #0a1120;
-  --foreground: #f1f5f9;
-  --accent: #3b9ae1;
+  /* ダークテーマの改善されたカラーパレット */
+  --background: #0f172a;
+  --foreground: #f3f4f6;
+  --accent: #818cf8;
   --accent-foreground: #ffffff;
-  --muted: #1a2636;
-  --muted-foreground: #a1b2cb;
-  --card: #1a2636;
-  --card-foreground: #f1f5f9;
-  --border: #2d3a4f;
+  --muted: #1e293b;
+  --muted-foreground: #9ca3af;
+  --card: #1e293b;
+  --card-foreground: #f3f4f6;
+  --border: #334155;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
 }
 
 /* フォールバックとしてシステム設定も保持 */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --background: #0f172a;
-    --foreground: #f8fafc;
-    --accent: #3b82f6;
+    --foreground: #f3f4f6;
+    --accent: #818cf8;
     --accent-foreground: #ffffff;
     --muted: #1e293b;
-    --muted-foreground: #94a3b8;
+    --muted-foreground: #9ca3af;
     --card: #1e293b;
-    --card-foreground: #f8fafc;
+    --card-foreground: #f3f4f6;
     --border: #334155;
   }
 }
@@ -45,8 +53,17 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-geist-sans), Arial, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1), color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+*, *::before, *::after {
+  transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1), 
+              border-color 0.6s cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer utilities {
@@ -92,9 +109,18 @@ body {
 
 .feature-card {
   border: 1px solid var(--border);
+  border-radius: var(--radius);
   overflow: hidden;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
 }
 
 .feature-card::before {
@@ -106,21 +132,21 @@ body {
   height: 100%;
   background: linear-gradient(135deg, var(--accent) 0%, transparent 100%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 0;
 }
 
 .feature-card:hover::before {
-  opacity: 0.05;
+  opacity: 0.08;
 }
 
 .feature-button {
-  background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 80%, #4dabf7) 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 80%, #8b5cf6) 100%);
   color: var(--accent-foreground);
   font-weight: 500;
   border-radius: var(--radius);
-  padding: 0.5rem 1.25rem;
-  transition: all 0.3s ease;
+  padding: 0.6rem 1.4rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--shadow-sm);
   border: none;
   position: relative;
@@ -130,6 +156,12 @@ body {
 .feature-button:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+  filter: brightness(1.1);
+}
+
+.feature-button:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
 }
 
 .feature-button::after {
@@ -139,7 +171,7 @@ body {
   left: 50%;
   width: 5px;
   height: 5px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.7);
   opacity: 0;
   border-radius: 100%;
   transform: scale(1, 1) translate(-50%, -50%);
@@ -147,7 +179,7 @@ body {
 }
 
 .feature-button:active::after {
-  animation: ripple 0.5s ease-out;
+  animation: ripple 0.6s ease-out;
 }
 
 /* モバイルレスポンシブ性向上のためのユーティリティ */
@@ -171,29 +203,48 @@ body {
   }
 }
 
-@keyframes float {
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.7;
+  }
 
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(50, 50);
+  }
+}
+
+@keyframes float {
   0%,
   100% {
     transform: translateY(0);
   }
 
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-12px);
   }
 }
 
-@keyframes pop {
+@keyframes float-star {
   0% {
-    transform: scale(0.95);
+    transform: translateY(0) scale(0.5) rotate(0deg);
+    opacity: 0;
   }
-
-  40% {
-    transform: scale(1.02);
+  10% {
+    opacity: 1;
   }
-
+  90% {
+    opacity: 0.8;
+  }
   100% {
-    transform: scale(1);
+    transform: translateY(-140px) scale(1.8) rotate(360deg);
+    opacity: 0;
   }
 }
 
@@ -219,10 +270,11 @@ body {
 
   20% {
     opacity: 1;
+    transform: translateY(-20px) scale(1) rotate(10deg);
   }
 
   100% {
-    transform: translateY(-100px) scale(1.5);
+    transform: translateY(-100px) scale(1.5) rotate(-10deg);
     opacity: 0;
   }
 }

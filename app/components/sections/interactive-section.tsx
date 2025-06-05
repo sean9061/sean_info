@@ -33,34 +33,32 @@ export default function InteractiveSection() {
   const currentFeature = features.find(f => f.id === activeComponent);
   
   return (
-    <section id="interactive" className="py-16 bg-background">
-      <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-bold mb-8 text-center">
-          インタラクティブ
+    <section id="interactive" className="relative py-16 bg-background">
+      {/* 装飾的な背景要素 */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full filter blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/5 rounded-full filter blur-3xl"></div>
+      
+      <div className="container relative z-10 mx-auto px-4">
+        <h2 className="text-2xl md:text-3xl font-bold mb-3 text-center bg-gradient-to-r from-foreground via-accent/80 to-foreground bg-clip-text text-transparent">
+          ミニゲーム＆機能
         </h2>
         
+        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+          さまざまなインタラクティブな機能を試してみましょう！各機能は楽しい体験を提供します。
+        </p>
+        
         <div className="max-w-3xl mx-auto">
-          {/* フィーチャーの説明 */}
-          <div className="mb-6 text-center">
-            <h3 className="text-lg font-semibold mb-2 text-accent">
-              {currentFeature?.name}
-            </h3>
-            <p className="text-muted-foreground">
-              {currentFeature?.description}
-            </p>
-          </div>
-          
-          {/* タブ切り替え */}
+          {/* 改善されたタブ切り替え */}
           <div className="mb-8 flex justify-center">
-            <div className="flex bg-card rounded-lg p-1 border border-border">
+            <div className="flex flex-wrap gap-2 justify-center">
               {features.map(feature => (
                 <button
                   key={feature.id}
                   onClick={() => setActiveComponent(feature.id as FeatureType)}
-                  className={`px-4 py-2 rounded-md text-sm ${
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                     activeComponent === feature.id
-                      ? 'bg-accent text-accent-foreground'
-                      : 'hover:bg-muted'
+                      ? 'bg-gradient-to-r from-accent to-accent/90 text-accent-foreground shadow-md'
+                      : 'bg-muted hover:bg-muted/90 border border-border/50'
                   }`}
                 >
                   {feature.name}
@@ -69,11 +67,20 @@ export default function InteractiveSection() {
             </div>
           </div>
           
-          {/* コンポーネント表示エリア */}
-          <div className="bg-card rounded-lg border border-border p-8">
-            {activeComponent === 'cat' && <CatChanger />}
-            {activeComponent === 'candy' && <CandyCounter />}
-            {activeComponent === 'compliment' && <ComplimentButton />}
+          {/* 説明文 */}
+          <div className="mb-6 text-center">
+            <p className="text-muted-foreground px-4 py-2 bg-muted/50 rounded-lg inline-block">
+              {currentFeature?.description}
+            </p>
+          </div>
+          
+          {/* コンポーネント表示エリア - アニメーションとスタイル改善 */}
+          <div className="bg-card rounded-lg shadow-md p-8 border border-border hover:border-accent/30 transition-all duration-500 animate-fade-in">
+            <div className="min-h-[300px] flex items-center justify-center">
+              {activeComponent === 'cat' && <CatChanger />}
+              {activeComponent === 'candy' && <CandyCounter />}
+              {activeComponent === 'compliment' && <ComplimentButton />}
+            </div>
           </div>
         </div>
       </div>
