@@ -20,6 +20,7 @@ export interface PersonalInfo {
   location: string;
   avatarImage?: string;
   initials: string;
+  description?: string;
   
   // About Me
   about: {

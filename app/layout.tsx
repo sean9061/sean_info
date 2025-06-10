@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { personalInfo } from "@/config/personal-info";
 import "./globals.css";
 
 const geistSans = Inter({
@@ -13,9 +14,11 @@ const geistMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const defaultDescription = `${personalInfo.name}のポートフォリオサイト`;
+
 export const metadata: Metadata = {
-  title: "ポートフォリオ",
-  description: "Next.jsで作成したポートフォリオサイト",
+  title: `${personalInfo.name}`,
+  description: personalInfo.description || defaultDescription
 };
 
 export default function RootLayout({
