@@ -147,7 +147,7 @@ export const personalInfo: PersonalInfo = {
     },
     {
       platform: "Instagram",
-      url: "https://instagram.com/heitor_hirose", // あなたのInstagramのURLに変更してください
+      url: "https://instagram.com/hirose_heitor", // あなたのInstagramのURLに変更してください
       icon: <FaInstagram className="size-6" />
     },
     {
