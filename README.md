@@ -1,119 +1,155 @@
-# Next.jsポートフォリオテンプレート 🚀
+# Next.jsポートフォリオテンプレート
 
 大学1年生向けのNext.jsポートフォリオ作成授業用テンプレートです。
 
-## 🎯 このテンプレートで学ぶこと
+## このテンプレートで学ぶこと
 
-- **Next.js**の基本的な使い方
-- **React**のコンポーネントとJSX
+- **Next.js 14**の基本的な使い方
+- **React**のコンポーネント設計とJSX
 - **useState**を使った状態管理
 - **Shadcn UI**を使ったモダンなUI作成
-- **TypeScript**の基本
-- **Tailwind CSS**でのスタイリング
+- **TypeScript**の型定義と活用
+- **Tailwind CSS v4**でのスタイリング
+- **React Icons**によるアイコン活用
 - **Vercel**でのWebサイト公開
 
-## 🌟 機能
+## 機能
 
-✅ レスポンシブデザイン（パソコン・スマホ対応）  
-✅ ダークモード・ライトモード切り替え  
-✅ プロフィール表示  
-✅ 趣味・学歴セクション  
-✅ インタラクティブなおみくじ機能  
-✅ モダンなUI（Shadcn UI使用）  
-✅ アイコン表示（React Icons使用）  
+- レスポンシブデザイン（パソコン・スマホ・タブレット対応）
+- ダークモード・ライトモード切り替え（2つのUIパターン）
+- 設定ファイルによる簡単なカスタマイズ
+- プロフィール・About Me表示
+- 技術スタック表示
+- 趣味・興味セクション
+- 学歴・教育歴セクション
+- インタラクティブなおみくじ機能
+- サイドバーレイアウト
+- ソーシャルリンク表示
+- モダンなUI（Shadcn UI使用）
+- 豊富なアイコン（React Icons使用）
 
-## 🚀 セットアップ方法
+## セットアップ方法
 
 ### 1. 依存関係のインストール
 
 ```bash
-npm install
-# または
 pnpm install
+# または
+npm install
 ```
 
 ### 2. 開発サーバーの起動
 
 ```bash
-npm run dev
-# または
 pnpm dev
+# または
+npm run dev
 ```
 
 ### 3. ブラウザで確認
 
 `http://localhost:3000` を開いてサイトを確認してください。
 
-## 📝 カスタマイズ方法
+## カスタマイズ方法
 
 ### 基本情報の編集
 
-`app/page.tsx` ファイルを開いて、以下の部分を編集してください：
+`config/personal-info.tsx` ファイルを開いて、以下の項目を編集してください：
 
-#### 1. 名前とイニシャル
+#### 1. 基本情報
 
 ```tsx
-// 49行目付近
-<CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-  {/* ここに自分の名前を入力してください */}
-  あなたの名前
-</CardTitle>
-
-// 44行目付近  
-<AvatarFallback className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-  {/* ここに自分のイニシャルを入れてください（例：田中太郎 → T.T） */}
-  YOUR
-</AvatarFallback>
+export const personalInfo: PersonalInfo = {
+  // 基本情報
+  name: "あなたの名前",              // ← ここを変更
+  title: "大学1年生・駆け出しエンジニア",   // ← ここを変更
+  location: "Tokyo, Japan",          // ← ここを変更
+  avatarImage: "avatar.jpg",         // ← 画像ファイル名（publicフォルダに配置）
+  initials: "YOUR",                  // ← アバター画像がない場合のイニシャル
+};
 ```
 
-#### 2. 自己紹介文
+#### 2. About Me セクション
 
 ```tsx
-// 75行目付近
-<p className="text-muted-foreground leading-relaxed">
-  {/* ここに自己紹介文を入力してください */}
-  こんにちは！○○大学の1年生です。プログラミングは初心者ですが、
-  Web開発に興味があり、これから頑張って学習していきたいと思います。
-  よろしくお願いします！
-</p>
+about: {
+  paragraphs: [
+    <>大学1年生の駆け出しエンジニアです。Web開発の世界に魅了され、日々新しい技術を学んでいます。</>,
+    // ← ここに自分の自己紹介を書いてください
+    <>現在は<strong className="text-foreground">React</strong>と<strong className="text-foreground">Next.js</strong>を中心としたモダンなフロントエンド技術を学習中。</>,
+    // 複数の段落で構成できます
+  ]
+},
 ```
 
-#### 3. 趣味（3つ）
+#### 3. 技術スタック
 
 ```tsx
-// 93行目付近
-<Badge variant="secondary" className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
-  趣味1（例：読書）
-</Badge>
-<Badge variant="secondary" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
-  趣味2（例：映画鑑賞）
-</Badge>
-<Badge variant="secondary" className="bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-100">
-  趣味3（例：プログラミング）
-</Badge>
+techStack: [
+  { name: "Next.js", icon: <SiNextdotjs className="w-3 h-3 mr-1" /> },
+  { name: "React", icon: <SiReact className="w-3 h-3 mr-1" /> },
+  // ← ここに学習中・使用中の技術を追加できます
+],
 ```
 
-#### 4. 学歴情報
+#### 4. 趣味・興味
 
 ```tsx
-// 115行目付近（高校）
-<h3 className="font-semibold">○○高等学校</h3>
-<p className="text-sm text-muted-foreground">2021年4月 - 2024年3月</p>
-<p className="text-sm mt-1">○○部で活動していました</p>
+hobbies: [
+  {
+    title: "Learning & Reading",           // タイトル
+    description: "技術書やPodcastでのインプット", // 説明
+    icon: <FaBook className="h-5 w-5 text-primary" />, // アイコン
+    badges: ["Clean Code", "Podcast"]      // バッジ
+  },
+  // ← 3つの趣味・興味を設定できます
+],
+```
 
-// 125行目付近（大学）
-<h3 className="font-semibold">○○大学 ○○学部</h3>
-<p className="text-sm text-muted-foreground">2024年4月 - 現在</p>
-<p className="text-sm mt-1">プログラミングやWeb開発について学習中</p>
+#### 5. 学歴・教育歴
+
+```tsx
+education: [
+  {
+    period: "2024 — 現在",
+    school: "○○大学 ○○学部",              // ← ここを変更
+    description: "プログラミングやWeb開発について学習中。", // ← ここを変更
+    badges: ["現在学習中", "Web開発", "フロントエンド"],
+    link: "https://example.com" // 学校のサイト（オプション）
+  },
+  // 高校の情報も同様に編集できます
+],
+```
+
+#### 6. ソーシャルリンク
+
+```tsx
+socialLinks: [
+  {
+    platform: "GitHub",
+    url: "https://github.com/yourusername", // ← あなたのURLに変更
+    icon: <FaGithub className="size-6" />
+  },
+  // Twitter, Instagram, Qiita, Zennなど複数のリンクを設定可能
+],
+```
+
+### アバター画像の追加
+
+1. 画像ファイルを `public/` フォルダに配置
+2. `personal-info.tsx` の `avatarImage` に画像ファイル名を指定
+
+```tsx
+avatarImage: "your-photo.jpg", // public/your-photo.jpg を参照
 ```
 
 ### テーマカラーの変更
 
 `tailwind.config.js` ファイルでテーマカラーを変更できます。
 
-## 🎲 おみくじ機能について
+## おみくじ機能について
 
-おみくじ機能は`useState`を使って実装されています：
+おみくじ機能は `components/sections/omikuji-section.tsx` で実装されており、`useState` を使っています：
 
 ```tsx
 const [omikujiResult, setOmikujiResult] = useState<string>("");
@@ -124,11 +160,15 @@ const drawOmikuji = () => {
 };
 ```
 
-- `useState`でおみくじの結果を管理
-- ボタンクリックで`drawOmikuji`関数が実行
-- ランダムに結果を選択して`setOmikujiResult`で状態を更新
+- `useState` でおみくじの結果を管理
+- ボタンクリックで `drawOmikuji` 関数が実行
+- ランダムに結果を選択して `setOmikujiResult` で状態を更新
 
-## 🌐 Vercelでの公開
+### おみくじの結果をカスタマイズ
+
+`components/sections/omikuji-section.tsx` の `omikujiOptions` 配列を編集して、結果を追加・変更できます。
+
+## Vercelでの公開
 
 ### 1. GitHubにプッシュ
 
@@ -151,46 +191,43 @@ git push -u origin main
 4. GitHubリポジトリを選択
 5. "Deploy"をクリック
 
-## 🛠 使用技術
+## 使用技術
 
 - **Next.js 14** - Reactフレームワーク
 - **TypeScript** - 型安全なJavaScript
-- **Tailwind CSS** - ユーティリティファーストCSS
+- **Tailwind CSS v4** - ユーティリティファーストCSS
 - **Shadcn UI** - モダンなUIコンポーネント
 - **React Icons** - 豊富なアイコンライブラリ
 - **next-themes** - ダークモード対応
+- **Radix UI** - アクセシブルなUIプリミティブ
+- **Lucide React** - 美しいアイコンセット
 
-## 📚 学習リソース
+## 学習リソース
 
 - [Next.js公式ドキュメント](https://nextjs.org/docs)
 - [React公式ドキュメント](https://ja.react.dev/)
 - [Shadcn UI](https://ui.shadcn.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
-## 🤝 授業での使い方
 
-1. **基本情報の編集**（30分）
-   - 名前、自己紹介、趣味、学歴を入力
-
-2. **おみくじ機能の理解**（35分）
-   - `useState`の動作を確認
-   - 結果の追加やカスタマイズ
-
-3. **Vercelでの公開**（25分）
-   - GitHubへのプッシュ
-   - Vercelでのデプロイ
-
-## ❓ よくある質問
+## よくある質問
 
 **Q: 開発サーバーが起動しない**
-A: Node.jsがインストールされているか確認してください。`node --version`で確認できます。
+A: Node.jsがインストールされているか確認してください。`node --version` で確認できます。
+
+**Q: 画像が表示されない**
+A: 画像ファイルが `public/` フォルダに配置されているか、ファイル名が正しいか確認してください。
 
 **Q: デザインを変更したい**
-A: `tailwind.config.js`でテーマを変更するか、各コンポーネントのクラス名を編集してください。
+A: `globals.css` でテーマを変更するか、この[サイト](https://tweakcn.com/editor/theme)で作成し適応させてください。
 
 **Q: おみくじの結果を追加したい**
-A: `omikujiOptions`配列に新しい結果を追加してください。
+A: `components/sections/omikuji-section.tsx` の `omikujiOptions` 配列に新しい結果を追加してください。
+
+**Q: 新しいセクションを追加したい**
+A: `components/sections/` に新しいコンポーネントを作成し、`app/page.tsx` でインポートしてください。
 
 ---
 
-頑張ってポートフォリオを作成しましょう！🎉
+頑張ってポートフォリオを作成しましょう！
