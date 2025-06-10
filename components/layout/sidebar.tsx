@@ -7,8 +7,9 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { personalInfo } from "@/config/personal-info";
 
 export function Sidebar() {
+
   return (
-    <aside className="lg:sticky lg:top-0 lg:h-screen lg:w-[40%] lg:py-24 lg:pl-12 lg:pr-8 px-8 py-6 lg:flex lg:flex-col lg:justify-between relative z-[60]">
+    <aside className="lg:sticky lg:top-0 lg:h-screen lg:w-[40%] lg:py-24 lg:pl-12 lg:pr-8 px-8 py-6 lg:flex lg:flex-col lg:justify-between relative z-10">
       <div>
         {/* アイコン */}
         <div className="mb-8 flex justify-center lg:justify-start">

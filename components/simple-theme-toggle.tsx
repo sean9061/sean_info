@@ -15,7 +15,7 @@ export function SimpleThemeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" className="h-14 w-14 rounded-full cursor-pointer">
+      <Button variant="default" className="h-14 w-14 rounded-full cursor-pointer bg-black z-[100]">
         <BsFillLightbulbFill className="size-8 text-yellow-500" />
         <span className="sr-only">テーマを切り替え</span>
       </Button>
@@ -28,10 +28,10 @@ export function SimpleThemeToggle() {
 
   return (
     <Button
-      variant="outline"
+      variant="default"
       onClick={() => setTheme(nextTheme)}
       title={tooltipText}
-      className={`overflow-hidden size-14 rounded-full cursor-pointer ${isDark ? '' : 'bg-black'}`}
+      className={`overflow-hidden size-14 rounded-full cursor-pointer bg-black z-[100]`}
     >
       <BsFillLightbulbOffFill className={`size-8 absolute transition-all duration-300 text-gray-400 ${isDark ? 'rotate-90 scale-0' : 'rotate-0 scale-100'}`} />
       <BsFillLightbulbFill className={`size-8 absolute transition-all duration-300 text-yellow-500 ${isDark ? 'rotate-0 scale-100' : '-rotate-90 scale-0'}`}/>
