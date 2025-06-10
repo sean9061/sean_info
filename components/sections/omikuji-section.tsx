@@ -46,9 +46,7 @@ export function OmikujiSection() {
       
       <div className="space-y-8 h-[28rem]">
         <h2 className="text-2xl font-bold tracking-tight hidden lg:block">Omikuji</h2>
-        <div className="text-center space-y-8">
-          <h3 className="text-lg font-semibold">今日の運勢</h3>
-          
+        <div className="text-center space-y-8">    
           <div className={`${isShaking ? 'animate-bounce' : ''}`}>
             <Image 
               src="/omikuji.png" 
