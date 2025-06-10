@@ -68,7 +68,7 @@ export const personalInfo: PersonalInfo = {
   about: {
     paragraphs: [
       <>
-        大学<span className="font-semibold">1年生</span>の駆け出しエンジニア、<strong className="text-foreground">広瀬エイトル</strong>です。愛知から東京へ移り、<span className="font-semibold">東京工科大学 コンピュータサイエンス学部</span>で学びながら、日々コードを書いています。
+        大学<span className="font-semibold">2年生</span>の駆け出しエンジニア、<strong className="text-foreground">広瀬エイトル</strong>です。愛知から東京へ移り、<span className="font-semibold">東京工科大学 コンピュータサイエンス学部</span>で学びながら、日々コードを書いています。
       </>,
       <>
         最近は<strong className="text-foreground">React</strong>と<strong className="text-foreground">Next.js</strong>を軸にモダンフロントエンドを探求中。型安全な開発体験が好きで、<strong className="text-foreground">TypeScript</strong>と<strong className="text-foreground">Tailwind CSS</strong>で UI を組むのがマイブームです。ハッカソンや受託案件でも Next.js を使い、実践的なスキルを磨いています。
