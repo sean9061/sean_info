@@ -152,7 +152,6 @@
 
 @layer base {
   * {
-    z-index: 1;
     @apply border-border outline-ring/50;
   }
   body {
