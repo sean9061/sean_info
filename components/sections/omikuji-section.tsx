@@ -12,12 +12,16 @@ export function OmikujiSection() {
 
   // おみくじの結果配列
   const omikujiOptions = [
-    "大吉",
-    "中吉",
-    "小吉",
-    "吉",
-    "末吉",
-    "凶"
+    "200 OK吉",
+    "404 吉が見つかりません",
+    "500 凶サーバー爆発",
+    "418 I'm a teapot吉",
+    "403 禁止された吉",
+    "null吉（未定義）",
+    "NaN凶 計算不能",
+    "Syntax凶ror",
+    "Segfault吉💥",
+    "Timeout吉⌛"
   ];
 
   // おみくじを引く関数
