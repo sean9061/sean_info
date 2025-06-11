@@ -48,7 +48,7 @@ export function OmikujiSection() {
         </h2>
       </div>
       
-      <div className="space-y-8 h-[28rem]">
+      <div className="space-y-8 h-[28rem] relative">
         <h2 className="text-2xl font-bold tracking-tight hidden lg:block">Omikuji</h2>
         <div className="text-center space-y-8">    
           <div className={`${isShaking ? 'animate-bounce' : ''}`}>
@@ -76,6 +76,19 @@ export function OmikujiSection() {
             </div>
           )}
         </div>
+        
+        {/* 結果が出たときに左下に表示される画像 */}
+        {omikujiResult && (
+          <div className="absolute bottom-0 left-0">
+            <Image 
+              src="/hekuta.png" 
+              alt="結果画像" 
+              width={100} 
+              height={100}
+              className="rounded opacity-90"
+            />
+          </div>
+        )}
       </div>
     </section>
   );

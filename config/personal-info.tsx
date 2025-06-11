@@ -92,7 +92,6 @@ export const personalInfo: PersonalInfo = {
     { name: "Flask", icon: <SiFlask className="w-3 h-3 mr-1" /> },
     { name: "MySQL", icon: <GrMysql className="w-3 h-3 mr-1" /> },
     { name: "React", icon: <SiReact className="w-3 h-3 mr-1" /> },
-    { name: "Python", icon: <FaPython className="w-3 h-3 mr-1" /> },
     { name: "Typescript", icon: <BiLogoTypescript className="w-3 h-3 mr-1" /> },
   ],
   
